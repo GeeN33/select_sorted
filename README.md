@@ -13,7 +13,7 @@
 
 - 
 ### Откройте склонированный репозиторий в PyCharm.
-https://github.com/GeeN33/Django_Homework_1.git
+https://github.com/GeeN33/select_sorted.git
 ### установите из файла список внешних зависимостей и библиотеки
 - requirements.txt
 - pip install -r requirements.txt
