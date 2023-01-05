@@ -1,8 +1,4 @@
 import csv
-"""
-Сортировка выбором
-
-"""
 
 def parsing_csv(limit):
     """
@@ -60,9 +56,9 @@ def find_min(arr, sort_columns):
             min_index = i
     return min_index
 
-def select_sorted(sort_columns ='high',limit=30, order='asc', filename='dump.csv'):
+def select_sorted(sort_columns,limit, order, filename):
     """
-    основная функция где происходит сортировка
+     функция где происходит сортировка
     """
     new_list = []
     all_stocks = parsing_csv(limit)
@@ -77,8 +73,25 @@ def select_sorted(sort_columns ='high',limit=30, order='asc', filename='dump.csv
     save_csv(new_list, filename)
     return  new_list
 
+def get_by_date(date, name, filename):
+    """
+    функция где происходит поиск
+    """
+    new_list = []
+    all_stocks = parsing_csv(limit=2000000)
+    for stock in all_stocks:
+        if date == stock['date'] and name == stock['Name']:
+            new_list.append(stock)
+
+    save_csv(new_list, filename)
+    return new_list
+
+
 if __name__ == '__main__':
 
-    sorted_list = select_sorted(sort_columns ='low', order='desc', filename='dump.csv')
+    sorted_list = select_sorted(sort_columns ='low',limit=10, order='desc', filename='dump_select_sorted.csv')
+
+    # sorted_list = get_by_date(date='2017-08-08', name='PCLN', filename='dump_get_by_date.csv')
+
     for list in sorted_list:
         print(list)
