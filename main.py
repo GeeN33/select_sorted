@@ -1,5 +1,4 @@
 import csv
-import itertools
 
 def parsing_csv(limit):
     """
