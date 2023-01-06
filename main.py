@@ -1,4 +1,5 @@
 import csv
+import itertools
 
 def parsing_csv(limit):
     """
@@ -85,17 +86,31 @@ def get_by_date(date, name, filename):
 
     save_csv(new_cache, filename)
     return new_cache
+def uniqs(inputstring):
+    """
+    Количество уникальных подстрок
+    """
+    substrings = [""]
+    for i in range(0, len(inputstring) + 1):
+        for j in range(i + 1, len(inputstring) + 1):
+            substr = inputstring[i:j]
+            substrings.append(substr)
+    uniq = set()
+    for ss in substrings:
+        uniq.add(ss)
+    return uniq
 
 
 if __name__ == '__main__':
 
     # sorted_list = select_sorted(sort_columns ='high',limit=10, order='asc', filename='dump_select_sorted1.csv')
     # sorted_list = select_sorted(sort_columns ='close',limit=10, order='asc', filename='dump_select_sorted2.csv')
-    # sorted_list = select_sorted(sort_columns ='low',limit=10, order='desc', filename='dump_select_sorted3.csv')
+    sorted_list = select_sorted(sort_columns ='low',limit=10, order='desc', filename='dump_select_sorted3.csv')
 
-    sorted_list = get_by_date(date='2017-08-08', name='PCLN', filename='dump_get_by_date.csv')
+    # sorted_list = get_by_date(date='2017-08-08', name='PCLN', filename='dump_get_by_date.csv')
 
-
+    # sorted_list =  uniqs("gfg")
+    # sorted_list = uniqs("ggg")
 
     for list in sorted_list:
         print(list)
